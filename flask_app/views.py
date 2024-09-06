@@ -9,7 +9,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 @app.route('/prediction', methods=['POST'])
-@limiter.limit()
+@limiter.limit("10 per minute")
 def use_prediction():
     logger.info('use_prediction has been called')
 
